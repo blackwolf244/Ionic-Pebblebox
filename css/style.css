@@ -1,0 +1,35 @@
+.header-card{
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+.header-card::before{
+  content: "";
+  top: 0;
+  left: 0;
+  background-image: url('../img/thd_campus1.jpg');
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-size: cover;
+  filter: blur(8px);
+  filter: brightness(40%);
+}
+.card-content{
+  position: relative;
+  padding-top: 5%;
+  padding-bottom: 3%;
+  padding-left: 10%;
+  padding-right: 10%;
+  color: aliceblue;
+}
+main{
+  padding-left: 10%;
+  padding-right: 10%;
+}
+footer{
+  position: fixed;
+  bottom: 10px;
+  left: 10%;
+}
+tr:nth-child(even) {background-color: #f2f2f2;}
