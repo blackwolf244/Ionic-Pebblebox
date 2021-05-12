@@ -5,8 +5,6 @@ A simple Application displaying a Dashboard that represents open API's with the 
 
 So why Pebbles? Basically it should be easily expandable. just throw in your Ideas on what to add next, throw your Pebble into this wonderful information Pond, and vote on which Pebble should be worked on next!
 
-This should allow a easy overview for your day at the THD.
-
 ## Requirements:
 
 Client-Server-Application with Front- and Backend:
@@ -23,7 +21,7 @@ Usage of a REST API (static like openmensa.org)
 
 Usage of dynamic data from a sensor (probably create an own REST API?)
 
-> For dynamic Data I'll choose a little 
+> For dynamic Data I'll choose a little Twitter Widget displaying the current Follower Stream data, latest Post and it's likes/retweets of the [THD Twitter Account](https://twitter.com/th_deggendorf?lang=en).
 
 Usage of OpenStreetMap
 
