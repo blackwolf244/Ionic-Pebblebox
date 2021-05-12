@@ -1,5 +1,5 @@
 ##### Web2 Projekt
-## THD Pebbles:
+## PebblePond:
 
 A simple Application displaying a Dashboard that represents open API's with the inclusion of Weather and Maps via [OpenWeatherMap](https://openweathermap.org/) and [OpenStreetMap](https://www.openstreetmap.org/) respectively.
 
