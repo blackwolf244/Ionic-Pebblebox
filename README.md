@@ -1,7 +1,9 @@
 ##### Web2 Projekt
 ## PebblePond:
 
-A simple Application displaying a Dashboard that represents open API's with the inclusion of Weather and Maps via [OpenWeatherMap](https://openweathermap.org/) and [OpenStreetMap](https://www.openstreetmap.org/) respectively.
+A simple Application displaying a Dashboard that presents Information of open API's like [OpenMensa](https://openmensa.org/c/198) with the inclusion of Weather and Maps via [OpenWeatherMap](https://openweathermap.org/) and [OpenStreetMap](https://www.openstreetmap.org/) respectively.
+
+Interactions therefor will be mainly based upon Voting Systems for OpenMensa and the Pebble API on it's own.
 
 So why Pebbles? Basically it should be easily expandable. just throw in your Ideas on what to add next, throw your Pebble into this wonderful information Pond, and vote on which Pebble should be worked on next!
 
