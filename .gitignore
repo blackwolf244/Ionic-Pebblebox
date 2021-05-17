@@ -1,5 +1,8 @@
 .DS_Store
 node_modules/
+.sass-cache/
+.tmp/
+.versions/
 /dist/
 
 # local env files
@@ -17,5 +20,7 @@ yarn-error.log*
 *.suo
 *.ntvs*
 *.njsproj
+*.sublime-project
+*.sublime-workspace
 *.sln
 *.sw*
