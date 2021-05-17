@@ -1,10 +1,10 @@
 ##### Web2 Projekt
 
-Name: Stefan Kern
+> Name: Stefan Kern
 
-Matrikelnummer: 00710808
+> Matrikelnummer: 00710808
 
-Projektname: Pebblepond 
+> Projektname: Pebblepond 
 
 ## PebblePond:
 
