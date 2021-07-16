@@ -61,20 +61,26 @@ Must follow the Corporate Identity of THD/DIT
    git clone https://mygit.th-deg.de/sk20808/web2-projekt.git
    ```
 
-2. install npm packages for the App and the API.
+2. Install the ionic cli
+
+   ```sh
+   npm i -g @ionic/cli
+   ```
+
+3. install npm packages for the App and the API.
 
    ```shell
    cd web2-projekt/ && npm i
    cd PebbleAPI/ && npm i
    ```
 
-3. start the API-Server in it's PebbleAPI/ folder.
+4. start the API-Server in it's PebbleAPI/ folder.
 
    ```sh
    npm run dev
    ```
 
-4. start the App in the root folder.
+5. start the App in the root folder.
 
    ```sh
    ionic serve
