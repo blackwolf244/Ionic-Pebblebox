@@ -86,13 +86,13 @@ The Server uses the Localhost Port Number :**1337**
 
 The App uses the Localhost Port Number :**8100**
 
-In case errors persist change the Ports to a open one in Following files:
+In case errors persist change the Ports to open ones in following files:
 
 #### Server 
 
-Change the Properties in the .env file in PebbleAPI/ to suit your environment.
+Change the properties in the .env file in PebbleAPI/ to suit your environment.
 
-Then Adapt the API call in the App
+Then change the API calls in the App.
 
 ##### cpu
 
@@ -100,7 +100,7 @@ Then Adapt the API call in the App
 
 ​	In the setup() function change the Portnumber to the before selected one:
 
-​	here as an Example with Port 3333.
+​	here as an Example with Port 3333:
 
 ```tsx
 setup() {
@@ -113,7 +113,7 @@ setup() {
 
 ​	In the setup() function change the Portnumber to the before selected one:
 
-​	here as an Example with Port 3333.
+​	here as an Example with Port 3333:
 
 ```tsx
 setup() {
@@ -122,7 +122,7 @@ setup() {
 
 #### App
 
-instead of calling ionic serve to start the App use:
+instead of calling ionic serve to start the App:
 
 here with Example of Port:6000:
 
