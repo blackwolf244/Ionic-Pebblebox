@@ -6,6 +6,8 @@
 
 > Projektname: Pebblepond 
 
+> GitLab Page: https://mygit.th-deg.de/sk20808/web2-projekt
+
 ## PebbleBox:
 
 A simple Application displaying a Dashboard that presents Information of open API's like [OpenMensa](https://openmensa.org/c/198) with the inclusion of Weather and Maps via [OpenWeatherMap](https://openweathermap.org/) and [OpenStreetMap](https://www.openstreetmap.org/) respectively.
@@ -51,7 +53,11 @@ Must follow the Corporate Identity of THD/DIT
 
 ## Installation:
 
-1. download the source from the master Tree and open it's folder
+1. Clone the source of the repository into a Folder.
+
+   ```sh
+   git clone https://mygit.th-deg.de/sk20808/web2-projekt.git
+   ```
 
 2. install npm packages for the App and the API.
 
