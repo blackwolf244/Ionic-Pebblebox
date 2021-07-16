@@ -8,6 +8,8 @@
 
 > GitLab Page: https://mygit.th-deg.de/sk20808/web2-projekt
 
+> DevSystem: Windows 10
+
 ## PebbleBox:
 
 A simple Application displaying a Dashboard that presents Information of open API's like [OpenMensa](https://openmensa.org/c/198) with the inclusion of Weather and Maps via [OpenWeatherMap](https://openweathermap.org/) and [OpenStreetMap](https://www.openstreetmap.org/) respectively.
