@@ -72,6 +72,56 @@ Must follow the Corporate Identity of THD/DIT
    ionic serve
    ```
 
+## Networking:
+
+The Server uses the Localhost Port Number :**1337**
+
+The App uses the Localhost Port Number :**8100**
+
+In case errors persist change the Ports to a open one in Following files:
+
+#### Server 
+
+Change the Properties in the .env file in PebbleAPI/ to suit your environment.
+
+Then Adapt the API call in the App
+
+##### cpu
+
+***/src/components/cpu.vue***
+
+​	In the setup() function change the Portnumber to the before selected one:
+
+​	here as an Example with Port 3333.
+
+```tsx
+setup() {
+    const urlBase = "http://localhost:3333/api/data/cpu";
+```
+
+##### memory
+
+​	***/src/components/memory.vue***
+
+​	In the setup() function change the Portnumber to the before selected one:
+
+​	here as an Example with Port 3333.
+
+```tsx
+setup() {
+    const urlBase = "http://localhost:3333/api/data/memory";
+```
+
+#### App
+
+instead of calling ionic serve to start the App use:
+
+here with Example of Port:6000:
+
+```sh
+ionic serve -p 6000
+```
+
 ## Navigation:
 
 #### Root Page "/" redirects to "/thd"
