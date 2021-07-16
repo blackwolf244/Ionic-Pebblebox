@@ -1,24 +1,32 @@
-import { createApp } from "vue";
-import App from "./App.vue";
-import "./registerServiceWorker";
-import router from "./router";
-import "metismenujs";
-import "metismenujs/dist/metismenujs.min.css"
-import "jquery";
-import "popper.js";
-import VueLogger from 'vuejs3-logger';
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router';
 
-const isProduction = process.env.NODE_ENV === 'production';
+import { IonicVue } from '@ionic/vue';
 
-const options = {
-    isEnabled: true,
-    logLevel: isProduction ? 'error' : 'debug',
-    stringifyArguments: false,
-    showLogLevel: true,
-    showMethodName: true,
-    separator: '|',
-    showConsoleColors: true
-};
+/* Core CSS required for Ionic components to work properly */
+import '@ionic/vue/css/core.css';
 
+/* Basic CSS for apps built with Ionic */
+import '@ionic/vue/css/normalize.css';
+import '@ionic/vue/css/structure.css';
+import '@ionic/vue/css/typography.css';
 
-createApp(App).use(VueLogger, options).use(router).mount('#app')
+/* Optional CSS utils that can be commented out */
+import '@ionic/vue/css/padding.css';
+import '@ionic/vue/css/float-elements.css';
+import '@ionic/vue/css/text-alignment.css';
+import '@ionic/vue/css/text-transformation.css';
+import '@ionic/vue/css/flex-utils.css';
+import '@ionic/vue/css/display.css';
+
+/* Theme variables */
+import './theme/variables.css';
+
+const app = createApp(App)
+  .use(IonicVue)
+  .use(router);
+  
+router.isReady().then(() => {
+  app.mount('#app');
+});

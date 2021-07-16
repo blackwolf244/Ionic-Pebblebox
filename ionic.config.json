@@ -1,0 +1,7 @@
+{
+  "name": "PebbleBox",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
