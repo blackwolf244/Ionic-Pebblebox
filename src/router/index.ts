@@ -15,9 +15,22 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import ('../views/Pebble.vue')
   },
   {
-    path: '/dashboard/:id',
-    component: () => import ('../views/Dashboard.vue')
-  }
+    path: '/dashboard/thd',
+    component: () => import ('../views/THDFavourites.vue')
+  },
+  {
+    path: '/dashboard/pond',
+    component: () => import ('../views/PebblePond.vue')
+  },
+  {
+    path: '/dashboard/social',
+    component: () => import ('../views/SocialMedia.vue')
+  },
+  {
+    path: '/:catchAll(.*)',
+    name: 'NotFound',
+    redirect: '/'
+  },
 ]
 
 const router = createRouter({

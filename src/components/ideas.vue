@@ -1,71 +1,37 @@
 <template>
   <div id="app">
+    <ion-item>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Info</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-note>
+            Vote up as much as you'd like for now! Later on we'll add a
+            State-System to orderly keep track of things! but for now Vote away!
+            We'll keep your Wishes in mind!
+          </ion-note>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
     <ion-list>
-      <ion-item>
+      <ion-item v-for="{ id, title, text, likes } in ideas" :key="id">
         <ion-card>
           <ion-card-header>
-            <ion-card-title>Awesome Title</ion-card-title>
+            <ion-card-title>{{ title }}</ion-card-title>
           </ion-card-header>
           <ion-card-content
             ><ion-text color="primary">
-              Contrary to popular belief, Lorem Ipsum is not simply random text.
-              It has roots in a piece of classical Latin literature from 45 BC,
-              making it over 2000 years old. Richard McClintock, a Latin
-              professor at Hampden-Sydney College in Virginia, looked up one of
-              the more obscure Latin words, consectetur, from a Lorem Ipsum
+              {{ text }}
             </ion-text>
             <ion-toolbar>
-              <ion-buttons slot="primary">
-                <ion-button color="warning"> Wish for it! </ion-button>
-              </ion-buttons>
-            </ion-toolbar>
-          </ion-card-content>
-        </ion-card>
-      </ion-item>
-      <ion-item>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Awesome Title</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <ion-text color="primary">
-              Contrary to popular belief, Lorem Ipsum is not simply random text.
-              It has roots in a piece of classical Latin literature from 45 BC,
-              making it over 2000 years old. Richard McClintock, a Latin
-              professor at Hampden-Sydney College in Virginia, looked up one of
-              the more obscure Latin words, consectetur, from a Lorem Ipsum
-            </ion-text>
-            <ion-toolbar>
-              <ion-button
-                v-on:click="onClick()"
-                fill="solid"
-                shape="round"
-                slot="end"
-              >
-                Make a wish!
-              </ion-button>
-            </ion-toolbar>
-          </ion-card-content>
-        </ion-card>
-      </ion-item>
-      <ion-item>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>Awesome Title</ion-card-title>
-          </ion-card-header>
-          <ion-card-content
-            ><ion-text color="primary">
-              Contrary to popular belief, Lorem Ipsum is not simply random text.
-              It has roots in a piece of classical Latin literature from 45 BC,
-              making it over 2000 years old. Richard McClintock, a Latin
-              professor at Hampden-Sydney College in Virginia, looked up one of
-              the more obscure Latin words, consectetur, from a Lorem Ipsum
-            </ion-text>
-            <ion-toolbar>
-              <ion-buttons slot="secondary">
+              <ion-buttons @click="like(id)" slot="secondary">
                 <ion-button color="primary">
                   <ion-icon color="warning" :icon="sparklesSharp"></ion-icon>
                   Make a Wish!
+                  <ion-chip outline="true">
+                    <ion-label>{{ likes }}</ion-label>
+                  </ion-chip>
                 </ion-button>
               </ion-buttons>
             </ion-toolbar>
@@ -77,96 +43,58 @@
 </template>
 
 <script lang='ts'>
-import { IonItem, IonList } from "@ionic/vue";
 import {
-  add,
-  arrowBackCircle,
-  arrowForwardCircle,
-  arrowUpCircle,
-  chevronDownCircleOutline,
-  heartOutline,
-  warningOutline,
-  bookmarkOutline,
-  logoFacebook,
-  logoInstagram,
-  logoTwitter,
-  logoVimeo,
-  person,
-  settings,
-  share,
-  ellipsisHorizontal,
-  ellipsisVertical,
-  helpCircle,
-  personCircle,
-  archiveOutline,
-  archiveSharp,
-  bookmarkSharp,
-  heartSharp,
-  mailOutline,
-  mailSharp,
-  paperPlaneOutline,
-  paperPlaneSharp,
-  schoolOutline,
-  schoolSharp,
-  settingsOutline,
-  settingsSharp,
-  fishOutline,
-  fishSharp,
-  sparklesOutline,
-  sparklesSharp,
-  search,
-  star,
-} from "ionicons/icons";
+  IonItem,
+  IonList,
+  IonButton,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardTitle,
+  IonText,
+  IonButtons,
+  IonIcon,
+  IonToolbar,
+} from "@ionic/vue";
+import { sparklesOutline, sparklesSharp } from "ionicons/icons";
+import { useLoadIdeas, likeIdea } from "@/firebase";
 
 import { defineComponent } from "vue";
 export default defineComponent({
   components: {
     IonItem,
     IonList,
+    IonButton,
+    IonCard,
+    IonCardContent,
+    IonCardHeader,
+    IonCardTitle,
+    IonText,
+    IonButtons,
+    IonIcon,
+    IonToolbar,
   },
   setup() {
+    const ideas = useLoadIdeas();
+
     return {
-      add,
-      arrowBackCircle,
-      arrowForwardCircle,
-      arrowUpCircle,
-      chevronDownCircleOutline,
-      heartOutline,
-      warningOutline,
-      bookmarkOutline,
-      logoFacebook,
-      logoInstagram,
-      logoTwitter,
-      logoVimeo,
-      person,
-      settings,
-      share,
-      ellipsisHorizontal,
-      ellipsisVertical,
-      helpCircle,
-      personCircle,
-      search,
-      star,
-      archiveOutline,
-      archiveSharp,
-      bookmarkSharp,
-      heartSharp,
-      mailOutline,
-      mailSharp,
-      paperPlaneOutline,
-      paperPlaneSharp,
-      schoolOutline,
-      schoolSharp,
-      settingsOutline,
-      settingsSharp,
-      fishOutline,
-      fishSharp,
       sparklesOutline,
       sparklesSharp,
+      ideas,
     };
   },
   name: "Ideas",
-  methods: {},
+  data() {
+    return {
+      pressed: false,
+    };
+  },
+  methods: {
+    async like(element: string | undefined) {
+      this.pressed = false;
+      await likeIdea(element);
+    },
+  },
 });
 </script>
 
@@ -200,9 +128,6 @@ export default defineComponent({
 ion-textarea {
   padding-bottom: 50px;
 }
-ion-button {
-  padding-right: 20px;
-}
 ion-checkbox {
   margin-left: 20px;
 }
@@ -213,5 +138,9 @@ ion-checkbox {
 
 ion-icon {
   padding-right: 10px;
+}
+
+ion-card {
+  width: 100%;
 }
 </style>

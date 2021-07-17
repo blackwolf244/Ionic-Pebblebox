@@ -11,31 +11,31 @@
 
     <ion-content :fullscreen="true">
       <div id="container">
-        <form action="" method="post">
+        <form @submit.prevent="onSubmit()">
           <ion-grid fixed>
             <ion-item>
               <ion-item>
                 <ion-label position="floating">Email</ion-label>
-                <ion-input formControlName="email" type="text"></ion-input>
+                <ion-input v-model="form.email" type="email"></ion-input>
               </ion-item>
             </ion-item>
             <ion-item class="left">
               <ion-label position="floating">Text goes here!</ion-label>
-              <ion-textarea rows="6" cols="20"></ion-textarea>
+              <ion-textarea
+                v-model="form.text"
+                required
+                rows="6"
+                cols="20"
+              ></ion-textarea>
             </ion-item>
             <ion-item>
               <ion-text class="padleft"
                 >Accept <a @click="showPrivacy()">Privacy Policy</a></ion-text
               >
-              <ion-checkbox required></ion-checkbox>
+              <ion-checkbox required v-model="form.checked"></ion-checkbox>
             </ion-item>
             <ion-toolbar>
-              <ion-button
-                v-on:click="onClick()"
-                fill="solid"
-                shape="round"
-                slot="end"
-              >
+              <ion-button type="submit" fill="solid" shape="round" slot="end">
                 Send!
               </ion-button>
             </ion-toolbar>
@@ -48,35 +48,33 @@
 
 <script lang="ts">
 import {
-  IonButtons,
   IonContent,
   IonHeader,
-  IonMenuButton,
   IonPage,
   IonTitle,
   IonToolbar,
-  IonCard,
-  IonCardContent,
   IonItem,
   IonLabel,
   IonButton,
+  IonButtons,
+  IonMenuButton,
   IonInput,
   IonTextarea,
   IonText,
   IonCheckbox,
   IonGrid,
   modalController,
+  toastController,
 } from "@ionic/vue";
-import { pin, walk, warning, wifi, wine, ellipse } from "ionicons/icons";
-import { defineComponent } from "vue";
+import { defineComponent, reactive } from "vue";
 import Privacy from "../components/privacy.vue";
+import { createContact } from "@/firebase";
+
 export default defineComponent({
   name: "Contact",
   components: {
-    IonButtons,
     IonContent,
     IonHeader,
-    IonMenuButton,
     IonPage,
     IonTitle,
     IonToolbar,
@@ -88,15 +86,13 @@ export default defineComponent({
     IonGrid,
     IonItem,
     IonLabel,
+    IonButtons,
+    IonMenuButton,
   },
-  setup() {
+  data() {
     return {
-      pin,
-      walk,
-      warning,
-      wifi,
-      wine,
-      ellipse,
+      form: reactive({ email: "", text: "", checked: false }),
+      buttontext: "Pebble away!",
     };
   },
   methods: {
@@ -106,6 +102,36 @@ export default defineComponent({
         componentProps: {},
       });
       return modal.present();
+    },
+    async openToast(message: string, duration: number) {
+      const toast = await toastController.create({
+        message: message,
+        duration: duration,
+      });
+      return toast.present();
+    },
+
+    async onSubmit() {
+      if (this.form.checked == false) {
+        this.openToast(
+          "You have to Accept the Privacy Policy in order to send a Message",
+          6000
+        );
+      } else {
+        try {
+          await createContact(this.form);
+          this.form.email = "";
+          this.form.text = "";
+          this.form.checked = false;
+          this.openToast(
+            "Your Message is sent off and saved on our Database! we'll try to respond ASAP so keep your eyes open for answers heading your way!",
+            8000
+          );
+          this.buttontext = "Another one?";
+        } catch (error) {
+          console.log(error);
+        }
+      }
     },
   },
 });

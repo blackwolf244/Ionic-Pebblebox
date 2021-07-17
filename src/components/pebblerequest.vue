@@ -1,20 +1,22 @@
 <template>
-  <ion-card-header>
-    <ion-card-title>To be determined</ion-card-title>
-  </ion-card-header>
-  <ion-card-content>
-    <div id="app">
-      <main>
-        <ion-text>
-          We always try to get new Pebbles going for you, so send in your Ideas
-          and Vote away!
-        </ion-text>
-        <p>
-          <router-link to="/pebble">Pebble Request</router-link>
-        </p>
-      </main>
-    </div>
-  </ion-card-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>To be determined</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div id="app">
+        <main>
+          <ion-text>
+            We always try to get new Pebbles going for you, so send in your
+            Ideas and Vote away!
+          </ion-text>
+          <p>
+            <router-link to="/pebble">Pebble Request</router-link>
+          </p>
+        </main>
+      </div>
+    </ion-card-content>
+  </ion-card>
 </template>
 
 <script lang='ts'>

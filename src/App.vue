@@ -16,6 +16,7 @@
                 @click="selectedIndex = i"
                 router-direction="root"
                 :router-link="p.url"
+                :key="$route.path"
                 lines="none"
                 detail="false"
                 class="hydrated"
@@ -57,6 +58,7 @@
             </ion-menu-toggle>
           </ion-list>
         </ion-content>
+        <router-vie :key="$route.path"></router-vie>
       </ion-menu>
       <ion-router-outlet id="main-content"></ion-router-outlet>
     </IonSplitPane>
@@ -126,12 +128,12 @@ export default defineComponent({
         iosIcon: schoolOutline,
         mdIcon: schoolSharp,
       },
-      {
-        title: "Your Favorites",
-        url: "/dashboard/favorites",
-        iosIcon: heartOutline,
-        mdIcon: heartSharp,
-      },
+      // {
+      //   title: "Your Favorites",
+      //   url: "/dashboard/favorites",
+      //   iosIcon: heartOutline,
+      //   mdIcon: heartSharp,
+      // },
       {
         title: "Pebble Pond",
         url: "/dashboard/pond",

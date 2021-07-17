@@ -43,6 +43,7 @@ import { pin, walk, warning, wifi, wine, ellipse } from "ionicons/icons";
 import { defineComponent } from "vue";
 import Request from "../components/request.vue";
 import Ideas from "../components/ideas.vue";
+
 export default defineComponent({
   name: "Contact",
   data() {

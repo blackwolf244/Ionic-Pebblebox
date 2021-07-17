@@ -1,27 +1,32 @@
 <template>
   <div id="app">
-    <!-- <ion-button @click="openMap()"> Show Map </ion-button> -->
-    <form action="" method="post">
+    <form @submit.prevent="onSubmit()">
       <ion-grid fixed>
         <ion-item>
           <ion-item>
             <ion-label position="floating">Idea Title</ion-label>
-            <ion-input formControlName="email" type="text"></ion-input>
+            <ion-input v-model="form.title" required></ion-input>
           </ion-item>
         </ion-item>
         <ion-item class="left">
           <ion-label position="floating">Your Idea goes here!</ion-label>
-          <ion-textarea rows="6" cols="20" auto-grow="true"></ion-textarea>
+          <ion-textarea
+            v-model="form.text"
+            required
+            rows="6"
+            cols="20"
+            auto-grow="true"
+          ></ion-textarea>
         </ion-item>
         <ion-item>
           <ion-text class="padleft"
             >Accept <a @click="showPrivacy()">Privacy Policy</a></ion-text
           >
-          <ion-checkbox required></ion-checkbox>
+          <ion-checkbox required v-model="form.checked"></ion-checkbox>
         </ion-item>
         <ion-toolbar>
-          <ion-button v-on:click="onClick()" fill="outline" slot="end">
-            Pebble away!
+          <ion-button type="submit" fill="outline" slot="end">
+            {{ buttontext }}
           </ion-button>
         </ion-toolbar>
       </ion-grid>
@@ -41,28 +46,12 @@ import {
   IonGrid,
   IonToolbar,
   modalController,
+  toastController,
 } from "@ionic/vue";
-import {
-  add,
-  arrowBackCircle,
-  arrowForwardCircle,
-  arrowUpCircle,
-  chevronDownCircleOutline,
-  heartOutline,
-  warningOutline,
-  bookmarkOutline,
-  logoFacebook,
-  logoInstagram,
-  logoTwitter,
-  logoVimeo,
-  person,
-  settings,
-  share,
-} from "ionicons/icons";
 
-import { defineComponent } from "vue";
-import MapModal from "../components/map.vue";
+import { defineComponent, reactive } from "vue";
 import Privacy from "../components/privacy.vue";
+import { createIdea } from "@/firebase";
 export default defineComponent({
   components: {
     IonItem,
@@ -75,45 +64,50 @@ export default defineComponent({
     IonGrid,
     IonToolbar,
   },
-  setup() {
+  name: "Request",
+  data() {
     return {
-      add,
-      arrowBackCircle,
-      arrowForwardCircle,
-      arrowUpCircle,
-      chevronDownCircleOutline,
-      heartOutline,
-      warningOutline,
-      bookmarkOutline,
-      logoFacebook,
-      logoInstagram,
-      logoTwitter,
-      logoVimeo,
-      person,
-      settings,
-      share,
+      form: reactive({ title: "", text: "", checked: false }),
+      buttontext: "Pebble away!",
     };
   },
-  name: "Request",
   methods: {
-    async openMap() {
-      const modal = await modalController.create({
-        component: MapModal,
-        componentProps: {
-          location: [48.1334774041, 12.1039466858],
-          title: "TH Deggendorf",
-          subtitle: "lat: 48.830133477, lon: 12.954103946",
-          info: "Edlmairstraße 6-8, 94469 Deggendorf, Germany",
-        },
-      });
-      return modal.present();
-    },
     async showPrivacy() {
       const modal = await modalController.create({
         component: Privacy,
         componentProps: {},
       });
       return modal.present();
+    },
+    async openToast(message: string, duration: number) {
+      const toast = await toastController.create({
+        message: message,
+        duration: duration,
+      });
+      return toast.present();
+    },
+
+    async onSubmit() {
+      if (this.form.checked == false) {
+        this.openToast(
+          "You have to Accept the Privacy Policy in order to hand in Ideas",
+          6000
+        );
+      } else {
+        try {
+          await createIdea(this.form);
+          this.form.title = "";
+          this.form.text = "";
+          this.form.checked = false;
+          this.openToast(
+            "Idea is sent off! Thanks for your Contribution! \n Check out all the other Ideas! Or create some more!",
+            8000
+          );
+          this.buttontext = "Another one?";
+        } catch (error) {
+          console.log(error);
+        }
+      }
     },
   },
 });

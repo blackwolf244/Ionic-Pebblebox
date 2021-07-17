@@ -42,7 +42,7 @@ Usage of OpenStreetMap
 
 Must follow the Corporate Identity of THD/DIT
 
-> Inspired by the bocky apperance in the THD-Website the layout of Pebblebox-Dashboard shows similarities while allowing clear readability by the usage of it's dedicated fonts and colours. Icons even if not being the same (unable to find source) are represented in a clear and simple Style jsut like the ones on the THD Website. 
+> Inspired by the bocky apperance in the THD-Website the layout of Pebblebox-Dashboard shows similarities while allowing clear readability by the usage of it's dedicated fonts and colours. Icons even if not being the same (unable to find source) are represented in a clear and simple style just like the ones on the THD Website. 
 
 | Development Requirements                                     |      |
 | ------------------------------------------------------------ | ---- |
@@ -92,7 +92,7 @@ The Server uses the Localhost Port Number :**1337**
 
 The App uses the Localhost Port Number :**8100**
 
-In case errors persist change the Ports to open ones in following files:
+**In case errors persist change the Ports to open ones in following files:**
 
 #### Server 
 
