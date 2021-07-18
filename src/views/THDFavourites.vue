@@ -28,9 +28,9 @@
             <!-- <ion-col size="12" size-sm="12" size-md="6" size-xl="4">
               <System />
             </ion-col> -->
-            <ion-col size="12" size-sm="12" size-md="6" size-xl="4">
+            <!-- <ion-col size="12" size-sm="12" size-md="6" size-xl="4">
               <PebbleRequest></PebbleRequest>
-            </ion-col>
+            </ion-col> -->
           </ion-row>
           <ion-row> </ion-row>
         </ion-grid>
@@ -57,7 +57,7 @@ import Weather from "../components/weather.vue";
 import OpenMensa from "../components/mensa.vue";
 import Twitter from "../components/twitter.vue";
 // import Shoutout from "../components/shoutout.vue";
-import PebbleRequest from "../components/pebblerequest.vue";
+// import PebbleRequest from "../components/pebblerequest.vue";
 // import System from "../components/system.vue";
 
 export default defineComponent({
@@ -78,7 +78,7 @@ export default defineComponent({
     Twitter,
     // Shoutout,
     // System,
-    PebbleRequest,
+    // PebbleRequest,
   },
   setup() {
     // const today = new Date().toISOString().slice(0, 10);

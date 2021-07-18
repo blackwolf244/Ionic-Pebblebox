@@ -18,7 +18,7 @@ Interactions therefor will be mainly based upon voting Systems for new Ideas usi
 
 So why Pebbles? Basically it should be easily expandable. just throw in your Idea on what to add next, throw your Pebble into this wonderful information Pond, and vote on which Pebble should be worked on next! And right after find the Pebbles you enjoy and share the Love.
 
-## Requirements:
+## Project Requirements:
 
 Client-Server-Application with Front- and Backend:
 
@@ -48,7 +48,6 @@ Must follow the Corporate Identity of THD/DIT
 | ------------------------------------------------------------ | ---- |
 | The programming language must be TypeScript                  | ✓    |
 | The frontend must use Vue3 with routing                      | ✓    |
-| Must follow the Corporate Identity of THD/DIT                | ✓    |
 | Usable on mobile phones (Android, IOS) and PC                | ✓    |
 | The backend must use ExpressJS (version 4 or 5, with TypeScript) | ✓    |
 | The frontend must use Bootstrap with SASS or **Ionic**       | ✓    |
@@ -66,6 +65,8 @@ Must follow the Corporate Identity of THD/DIT
    ```sh
    npm i -g @ionic/cli
    ```
+
+   > global installation is recommended
 
 3. install npm packages for the App and the API.
 
@@ -96,39 +97,22 @@ The App uses the Localhost Port Number :**8100**
 
 #### Server 
 
-Change the properties in the .env file in PebbleAPI/ to suit your environment.
+Change the properties in PebbleAPI/.env to suit your environment.
 
-Then change the API calls in the App.
-
-##### cpu
-
-***/src/components/cpu.vue***
-
-​	In the setup() function change the Portnumber to the before selected one:
-
-​	here as an Example with Port 3333:
-
-```tsx
-setup() {
-    const urlBase = "http://localhost:3333/api/data/cpu";
+```sh
+SERVER_HOSTNAME=localhost
+SERVER_PORT=1337
 ```
 
-##### memory
+Then change the API adress for correct access in the App via /.env
 
-​	***/src/components/memory.vue***
-
-​	In the setup() function change the Portnumber to the before selected one:
-
-​	here as an Example with Port 3333:
-
-```tsx
-setup() {
-    const urlBase = "http://localhost:3333/api/data/memory";
+```sh
+VUE_APP_LOCAL_SERVER=http://localhost:1337/api/data/memory
 ```
 
 #### App
 
-instead of calling ionic serve to start the App:
+instead of calling ionic serve to start the App, start it like this:
 
 here with Example of Port:6000:
 
@@ -138,12 +122,16 @@ ionic serve -p 6000
 
 ## Known Issues and Errors
 
+#### Errors showing in VsCode
+
 ```sh
 [vue/no-deprecated-slot-attribute]
 `slot` attributes are deprecated.
 ```
 
 > The slots that the Ionic Framework uses are not the same as Vue 2 slots. The slots used here are Web Component slots and are valid usage: https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots.
+
+### Errors showing in the browser commandline
 
 ```shell
 GET http://localhost:1337/api/data/memory net::ERR_CONNECTION_REFUSED
@@ -158,11 +146,21 @@ Failed to load resource: the server responded with a status of 404 ()
 
 > Error appears if the Mensa Pebble can't load todays meals. Which happens on Weekends for example. 
 
+### Other issues
+
 ```sh
-First LoadTime is taking up to 5 seconds
+First Load is taking long
 ```
 
 > This mostly comes down to the overhead of the ionic packages, give it some time and it should work itself out.
+>
+> In production the overhead is highly reduced but in development it's kept for quick edits
+
+```sh
+Map is not loading correctly
+```
+
+> This occurs when the Map module is reloaded. 
 
 ## Navigation:
 

@@ -28,7 +28,7 @@ export default defineComponent({
   },
   emits: ["start-data"],
   setup() {
-    const urlBase = "http://localhost:1337/api/data/memory";
+    const urlBase = process.env.VUE_APP_LOCAL_SERVER;
     let data: { memory: number; used: number };
     const chartRef = ref<null | { update: () => void }>(null); // ref(0);
     const doughnutChart = {

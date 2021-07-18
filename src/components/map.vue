@@ -25,7 +25,7 @@
             <ion-card>
               <ion-card-header>
                 <ion-card-subtitle>{{ subtitle }}</ion-card-subtitle>
-                <ion-card-title>{{ title }}</ion-card-title>
+                <ion-title>{{ title }}</ion-title>
               </ion-card-header>
               <ion-card-content>
                 <ion-text color="primary">
@@ -117,6 +117,8 @@ export default defineComponent({
   },
   methods: {
     dismissModal() {
+      // eslint-disable-next-line vue/no-mutating-props
+      this.location = [];
       modalController.dismiss();
     },
     doSomethingOnReady() {

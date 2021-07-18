@@ -112,9 +112,29 @@ export default defineComponent({
       urlBase: "http://api.openweathermap.org/data/2.5/",
       icon: "",
       weather: {},
+      interval: 1,
+      timer: 10,
     };
   },
+  emits: ["start-data"],
   methods: {
+    startData() {
+      this.timer = 10;
+      this.$emit("start-data");
+      this.startTimer();
+    },
+
+    startTimer() {
+      clearInterval(this.interval);
+
+      this.interval = setInterval(() => {
+        if (this.timer === 0) {
+          clearInterval(this.interval);
+        } else {
+          this.fetchWeather();
+        }
+      }, 600000);
+    },
     fetchWeather() {
       fetch(
         `${this.urlBase}weather?q=Deggendorf&units=metric&APPID=${this.apiKey}`
@@ -130,6 +150,7 @@ export default defineComponent({
     },
   },
   mounted() {
+    this.startTimer();
     this.fetchWeather();
   },
 });
