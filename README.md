@@ -136,6 +136,34 @@ here with Example of Port:6000:
 ionic serve -p 6000
 ```
 
+## Known Issues and Errors
+
+```sh
+[vue/no-deprecated-slot-attribute]
+`slot` attributes are deprecated.
+```
+
+> The slots that the Ionic Framework uses are not the same as Vue 2 slots. The slots used here are Web Component slots and are valid usage: https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_templates_and_slots.
+
+```shell
+GET http://localhost:1337/api/data/memory net::ERR_CONNECTION_REFUSED
+GET http://localhost:1337/api/data/cpu net::ERR_CONNECTION_REFUSED
+```
+
+> Those connection errors appear if the backend server for the "Serverinformation" Pebble isn't running. Start the server via the instructions above to fix the issue.
+
+```sh
+Failed to load resource: the server responded with a status of 404 ()
+```
+
+> Error appears if the Mensa Pebble can't load todays meals. Which happens on Weekends for example. 
+
+```sh
+First LoadTime is taking up to 5 seconds
+```
+
+> This mostly comes down to the overhead of the ionic packages, give it some time and it should work itself out.
+
 ## Navigation:
 
 #### Root Page "/" redirects to "/thd"

@@ -25,10 +25,11 @@ import {
   IonCardTitle,
   IonCardContent,
   IonText,
+  IonCard,
 } from "@ionic/vue";
 import { defineComponent } from "vue";
 export default defineComponent({
-  components: { IonCardHeader, IonCardTitle, IonCardContent, IonText },
+  components: { IonCardHeader, IonCardTitle, IonCardContent, IonText, IonCard },
   name: "Pebblerequest",
 });
 </script>

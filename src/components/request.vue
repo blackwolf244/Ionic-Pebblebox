@@ -150,6 +150,10 @@ ion-checkbox {
   margin-left: 20px;
 }
 
+ion-item {
+  width: 100%;
+}
+
 .padleft {
   padding-left: 15px;
 }

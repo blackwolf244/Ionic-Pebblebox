@@ -3,7 +3,7 @@
     <ion-item>
       <ion-card>
         <ion-card-header>
-          <ion-card-title>Info</ion-card-title>
+          <ion-card-title color="success">Info</ion-card-title>
         </ion-card-header>
         <ion-card-content>
           <ion-note>
@@ -84,14 +84,8 @@ export default defineComponent({
     };
   },
   name: "Ideas",
-  data() {
-    return {
-      pressed: false,
-    };
-  },
   methods: {
     async like(element: string | undefined) {
-      this.pressed = false;
       await likeIdea(element);
     },
   },

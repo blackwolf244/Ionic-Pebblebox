@@ -58,7 +58,6 @@
             </ion-menu-toggle>
           </ion-list>
         </ion-content>
-        <router-vie :key="$route.path"></router-vie>
       </ion-menu>
       <ion-router-outlet id="main-content"></ion-router-outlet>
     </IonSplitPane>
