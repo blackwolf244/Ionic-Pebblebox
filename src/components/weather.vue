@@ -34,6 +34,9 @@
               <ion-fab-button href="/contact">
                 <ion-icon :icon="warningOutline"></ion-icon>
               </ion-fab-button>
+              <ion-fab-button @click="openMap(location)"
+                ><ion-icon :icon="compassOutline"></ion-icon
+              ></ion-fab-button>
             </ion-fab-list>
           </ion-fab>
         </main>
@@ -53,6 +56,7 @@ import {
   IonCardHeader,
   IonCardTitle,
   IonText,
+  modalController,
 } from "@ionic/vue";
 import {
   add,
@@ -62,17 +66,14 @@ import {
   chevronDownCircleOutline,
   heartOutline,
   warningOutline,
-  bookmarkOutline,
-  logoFacebook,
-  logoInstagram,
-  logoTwitter,
-  logoVimeo,
   person,
   settings,
   share,
+  compassOutline,
 } from "ionicons/icons";
 
 import { defineComponent } from "vue";
+import MapModal from "../components/map.vue";
 
 export default defineComponent({
   components: {
@@ -95,14 +96,10 @@ export default defineComponent({
       chevronDownCircleOutline,
       heartOutline,
       warningOutline,
-      bookmarkOutline,
-      logoFacebook,
-      logoInstagram,
-      logoTwitter,
-      logoVimeo,
       person,
       settings,
       share,
+      compassOutline,
     };
   },
   name: "Weather",
@@ -118,6 +115,19 @@ export default defineComponent({
   },
   emits: ["start-data"],
   methods: {
+    async openMap() {
+      const modal = await modalController.create({
+        component: MapModal,
+        componentProps: {
+          location: [48.833393411673434, 12.962065015888],
+          title: "Deggendorf",
+          subtitle: "lat: 48.837850089, lon: 12.957642621",
+          info: "Die Hochschulstadt mit rund 37.000 Einwohnern (Stand: 1. Januar 2020) wird aufgrund ihrer Lage im Donautal, gegenüber der Mündung der Isar in die Donau und am Fuße des Bayerischen Waldes auch als Donaustadt und „Tor zum Bayerischen Wald“ bezeichnet.",
+        },
+      });
+      return modal.present();
+    },
+
     startData() {
       this.timer = 10;
       this.$emit("start-data");

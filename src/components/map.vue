@@ -1,7 +1,7 @@
 <template>
   <ion-header>
     <ion-toolbar>
-      <ion-title>Map</ion-title>
+      <ion-card-title>Map</ion-card-title>
       <ion-button @click="closeModal" slot="end" fill="clear">
         <ion-icon slot="icon-only" :icon="closeOutline"></ion-icon>
       </ion-button>
@@ -20,7 +20,7 @@
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         ></l-tile-layer>
         <l-control-layers />
-        <l-marker :lat-lng="[48.8301334774041, 12.9541039466858]">
+        <l-marker :lat-lng="location">
           <l-popup>
             <ion-card>
               <ion-card-header>
@@ -53,6 +53,7 @@ import {
   IonCardContent,
   IonCardHeader,
   IonCardSubtitle,
+  IonCardTitle,
   IonText,
 } from "@ionic/vue";
 import { defineComponent } from "vue";
@@ -87,6 +88,7 @@ export default defineComponent({
     IonCardHeader,
     IonCardSubtitle,
     IonText,
+    IonCardTitle,
   },
   name: "Modal",
   props: {
