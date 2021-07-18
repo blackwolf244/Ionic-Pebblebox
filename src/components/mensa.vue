@@ -30,9 +30,9 @@
             <ion-icon :icon="chevronDownCircleOutline"></ion-icon>
           </ion-fab-button>
           <ion-fab-list side="bottom">
-            <ion-fab-button>
+            <!-- <ion-fab-button>
               <ion-icon :icon="heartOutline"></ion-icon
-            ></ion-fab-button>
+            ></ion-fab-button> -->
             <ion-fab-button href="/contact">
               <ion-icon :icon="warningOutline"></ion-icon>
             </ion-fab-button>
