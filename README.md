@@ -6,7 +6,7 @@
 
 > Projektname: Pebblepond 
 
-> GitLab Page: https://mygit.th-deg.de/sk20808/web2-projekt
+> GitLab Page: https://github.com/blackwolf244/Ionic-Pebblebox.git
 
 > DevSystem: Windows 10
 
