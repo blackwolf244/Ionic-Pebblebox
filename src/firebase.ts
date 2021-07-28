@@ -2,12 +2,7 @@ import firebase from 'firebase'
 import { ref, onUnmounted } from 'vue'
 
 const config = {
-    apiKey: "AIzaSyBFujfq6TdGrHMVREcARNLTjZDE6TpAxfw",
-    authDomain: "pebblebox-b678d.firebaseapp.com",
-    projectId: "pebblebox-b678d",
-    storageBucket: "pebblebox-b678d.appspot.com",
-    messagingSenderId: "556829038900",
-    appId: "1:556829038900:web:8e25490b6313288da32d61"
+    //Enter your Firebase config here!
 }
   
 const firebaseApp = firebase.initializeApp(config)

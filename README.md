@@ -2,11 +2,7 @@
 
 > Name: Stefan Kern
 
-> Matrikelnummer: 00710808
-
 > Projektname: Pebblepond 
-
-> GitLab Page: https://github.com/blackwolf244/Ionic-Pebblebox.git
 
 > DevSystem: Windows 10
 
@@ -57,7 +53,7 @@ Must follow the Corporate Identity of THD/DIT
 1. Clone the source of the repository into a Folder.
 
    ```sh
-   git clone https://mygit.th-deg.de/sk20808/web2-projekt.git
+   git clone https://github.com/blackwolf244/Ionic-Pebblebox.git
    ```
 
 2. Install the ionic cli
@@ -75,13 +71,36 @@ Must follow the Corporate Identity of THD/DIT
    cd PebbleAPI/ && npm i
    ```
 
-4. start the API-Server in it's PebbleAPI/ folder.
+4. Set API-Keys by creating a .env file in root and importing following configs.
+
+   ```
+   VUE_APP_LOCAL_SERVER=http://localhost:1337/api/data/memory
+   VUE_OPEN_WEATHER_KEY=youropenweatherapikey
+   ```
+
+   > https://openweathermap.org/api
+
+   
+
+5. Set the firebase config in the /src/firebase.ts file
+
+   ```
+   const config = {
+       //Enter your Firebase config here!
+   }
+   ```
+
+   > Create a Firebase Project with Firestore and create 3 collections named idea, contacts and shouts those are used to save the data input of the app.
+   >
+   > https://firebase.google.com/
+
+6. start the API-Server in it's PebbleAPI/ folder.
 
    ```sh
    npm run dev
    ```
 
-5. start the App in the root folder.
+7. start the App in the root folder.
 
    ```sh
    ionic serve
