@@ -8,6 +8,8 @@
 
 ## PebbleBox:
 
+![dashboard](images/dashboard.jpg)
+
 A simple Application displaying a Dashboard that presents Information of open API's like [OpenMensa](https://openmensa.org/c/198) with the inclusion of Weather and Maps via [OpenWeatherMap](https://openweathermap.org/) and [OpenStreetMap](https://www.openstreetmap.org/) respectively.
 
 Interactions therefor will be mainly based upon voting Systems for new Ideas using the PebblePond API.
